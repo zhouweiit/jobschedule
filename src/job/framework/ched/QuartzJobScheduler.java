@@ -10,11 +10,21 @@ import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.impl.StdSchedulerFactory;
 
-
+/**
+ * 作业装载类，负责将作业加载进实例或者卸载
+ * 
+ * @author zhouw
+ */
 public class QuartzJobScheduler {
-
+	
+	/**
+	 * 调度器实例
+	 */
 	private static Scheduler scheduler = null;
     
+	/**
+	 * log4j
+	 */
 	private static Logger logger = Logger.getLogger(QuartzJobScheduler.class);
 
 	static {
@@ -26,6 +36,13 @@ public class QuartzJobScheduler {
 		}
 	}
 
+	/**
+	 * 将作业加载进调度器实例
+	 * @param job 作业实例
+	 * 
+	 * @throws JobException
+	 * @author zhouwei
+	 */
 	public static void schedule(ScheduleJob job) throws JobException {
 		try {
 			logger.info("commonjob framework start to schedule job [" + job.getJobScriptName() + ".class]");
@@ -41,6 +58,13 @@ public class QuartzJobScheduler {
 		}
 	}
     
+	/**
+	 * 将作业从调度器中卸载
+	 * @param job 作业实例
+	 * @throws JobException
+	 * 
+	 * @author zhouwei
+	 */
 	public static void unschedule(ScheduleJob job) throws JobException {
 		try {
 			if(job.getJobType() == ScheduleJob.PHP){

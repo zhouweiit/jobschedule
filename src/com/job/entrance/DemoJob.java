@@ -5,13 +5,22 @@ import java.util.Map;
 import job.framework.core.CommonJob;
 import job.framework.lang.JobException;
 
+import com.job.common.test.biz.UserService;
 import com.job.common.util.JobService;
 
 public class DemoJob extends JobService implements CommonJob{
 	
 	public int execute(long jobId, int dsPos, Map<String, String> jobConfig) throws JobException {
-		System.out.println(holder.testUserService);
-		return 0;
+		int processItems = 0;
+		String errKey = null;
+		try {
+			UserService service = holder.testUserService;
+			//jobÒµÎñÂß¼­
+		} catch (Exception e) {
+			jobLogger.errorLog(errKey, e);
+		}
+		
+		return processItems;
 	}
 	
 	public static void main(String[] args) throws Exception{

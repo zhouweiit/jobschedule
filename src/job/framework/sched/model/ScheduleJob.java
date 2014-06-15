@@ -2,6 +2,13 @@ package job.framework.sched.model;
 
 import java.util.Map;
 
+/**
+ * 
+ * ×÷Òµentity
+ * 
+ * @author zhouwei
+ *
+ */
 public class ScheduleJob {
 	
 	public static final int JAVA = 0;

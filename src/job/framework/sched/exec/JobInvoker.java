@@ -5,6 +5,12 @@ import job.framework.sched.model.ScheduleJob;
 import org.apache.log4j.Logger;
 import job.framework.sched.exec.JobExecutor;
 
+/**
+ * 负责作业类型的路由，根据作业类型按照不同的方式执行
+ * 
+ * @author zhouwei
+ *
+ */
 public class JobInvoker {
 
 	private static Logger logger = Logger.getLogger(JobInvoker.class);

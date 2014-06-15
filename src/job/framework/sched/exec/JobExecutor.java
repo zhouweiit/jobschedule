@@ -5,6 +5,11 @@ import job.framework.sched.model.ScheduleJob;
 
 import org.apache.log4j.Logger;
 
+/**
+ * java作业执行器，负责执行java作业，并代理作业execute方法
+ * @author zhouw
+ *
+ */
 public class JobExecutor {
 
 	private static Logger logger = Logger.getLogger(JobExecutor.class);

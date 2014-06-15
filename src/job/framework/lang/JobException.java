@@ -1,5 +1,11 @@
 package job.framework.lang;
 
+/**
+ * Job项目的exception类
+ * 
+ * @author zhouwei
+ *
+ */
 public class JobException extends Exception {
 
 	private static final long serialVersionUID = 1000L;
