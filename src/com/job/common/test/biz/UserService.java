@@ -4,7 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.commonjobframework.lang.JobException;
+import job.framework.lang.JobException;
+
 import org.springframework.stereotype.Component;
 
 import com.job.common.test.dao.UserDao;

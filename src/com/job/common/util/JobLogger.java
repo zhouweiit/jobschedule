@@ -6,7 +6,8 @@ import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.commonjobframework.facade.IJobLogger;
+import job.framework.facade.IJobLogger;
+
 
 /*
  * 作业日志处理器

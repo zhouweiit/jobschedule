@@ -2,7 +2,8 @@ package com.job.common.test.dao;
 
 import java.util.List;
 
-import org.commonjobframework.lang.JobException;
+import job.framework.lang.JobException;
+
 
 import com.job.common.test.entity.User;
 

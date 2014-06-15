@@ -4,9 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.commonjobframework.ds.DataSourceSetter;
-import org.commonjobframework.lang.JobException;
-import org.commonjobframework.persist.PersistManager;
+import job.framework.ds.DataSourceSetter;
+import job.framework.lang.JobException;
+import job.framework.persist.PersistManager;
+
 import org.springframework.stereotype.Component;
 
 import com.job.common.test.dao.UserDao;

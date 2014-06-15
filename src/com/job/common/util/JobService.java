@@ -1,6 +1,6 @@
 package com.job.common.util;
 
-import org.commonjobframework.facade.IJobLogger;
+import job.framework.facade.IJobLogger;
 
 /*
  * 所有的作业逻辑的超类,所有的作业均继承该类

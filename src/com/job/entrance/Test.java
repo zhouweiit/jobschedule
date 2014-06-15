@@ -2,8 +2,9 @@ package com.job.entrance;
 
 import java.util.Map;
 
-import org.commonjobframework.core.CommonJob;
-import org.commonjobframework.lang.JobException;
+import job.framework.core.CommonJob;
+import job.framework.lang.JobException;
+
 
 import com.job.common.util.JobService;
 
