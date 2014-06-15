@@ -8,6 +8,12 @@ import job.framework.persist.PersistManager;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+/**
+ * 数据库访问实现类，通过实现接口并包装sqlMapClient的方法，便于项目统一扩展
+ * 
+ * @author zhouwei
+ *
+ */
 public class IbatisPersistManager implements PersistManager {
 
 	private SqlMapClient sqlMapClient;

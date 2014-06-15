@@ -4,7 +4,7 @@ import java.util.Map;
 
 /**
  * 
- * 作业配置entity，定义作业最基本的信息
+ * 调度器作业基本信息实例，定义包含的基本信息与配置内容
  * 
  * @author zhouwei
  *

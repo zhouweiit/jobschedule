@@ -15,6 +15,12 @@ public class JobInvoker {
 
 	private static Logger logger = Logger.getLogger(JobInvoker.class);
 	
+	/**
+	 * 根据作业类型，调用作业
+	 * @param job 调度器作业基本信息实例
+	 * @return void
+	 * @author zhouwei
+	 */
 	public static void invoke(ScheduleJob job) {
 		try {
 			String cmd = null;

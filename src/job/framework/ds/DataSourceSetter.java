@@ -27,7 +27,8 @@ public class DataSourceSetter {
 	/**
 	 * »ñÈ¡datasourceµÄkey
 	 * 
-	 * @return 
+	 * @return key
+	 * @author zhouwei
 	 */
 	public static String getDatabase() {
 		return (String) contextHolder.get();
