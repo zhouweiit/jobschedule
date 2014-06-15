@@ -2,6 +2,8 @@ package com.job.common.util;
 
 import job.framework.facade.IJobLogger;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /*
  * 所有的作业逻辑的超类,所有的作业均继承该类
  * 
@@ -14,6 +16,10 @@ public class JobService {
 	protected int fetchLimit;
 
 	protected IJobLogger jobLogger = new JobLogger();
+	
+	static {
+		new ClassPathXmlApplicationContext("beans.xml");
+	}
 	
 	public String getThreadCondition() {
 		return threadCondition;

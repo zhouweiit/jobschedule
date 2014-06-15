@@ -7,5 +7,6 @@
 
     <settings useStatementNamespaces="true"/>
     
-	    
+	 <sqlMap resource="com/job/common/test/entity/User.xml"/>
+	     
 </sqlMapConfig>

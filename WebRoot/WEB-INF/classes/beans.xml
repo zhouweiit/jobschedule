@@ -9,7 +9,7 @@
            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
        <context:annotation-config></context:annotation-config>
-       <context:component-scan base-package="com.dangdang.job"></context:component-scan>
+       <context:component-scan base-package="com.job"></context:component-scan>
        
        <import resource="classpath:datasources.xml"/>
       
@@ -18,7 +18,7 @@
          <property name="dataSource" ref="test"></property>
        </bean>
        
-       <bean id="testPersistManager" class="org.commonjobframework.persist.ibatis.IbatisPersistManager">
+       <bean id="testPersistManager" class="job.framework.persist.ibatis.IbatisPersistManager">
           <property name="sqlMapClient" ref="testSqlMapClient"></property>
        </bean>
 </beans>
