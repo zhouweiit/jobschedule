@@ -11,9 +11,22 @@ import job.framework.facade.IJobLogger;
 import job.framework.lang.JobException;
 import job.framework.sched.model.ScheduleJob;
 
-
+/**
+ * 作业反射器，负责作业实例化、设置于执行
+ * 
+ * @author zhouwei
+ *
+ */
 public class JobReflecter {
 	
+	/**
+	 * 根据作业调度器中的调度信息，反射获取作业实例
+	 * 
+	 * @param job
+	 * @return
+	 * @throws JobException
+	 * @author zhouwei
+	 */
 	public static Object getJobInstance(ScheduleJob job) throws JobException{
 		try {
 			Class<?> jobClass = Class.forName("com.job.entrance." + job.getJobScriptName());
@@ -29,6 +42,14 @@ public class JobReflecter {
 		}
 	}
 	
+	/**
+	 * 执行作业
+	 * @param job
+	 * @param jobInstance
+	 * @return
+	 * @throws JobException
+	 * @author zhouwei
+	 */
 	public static Integer executeJob(ScheduleJob job, Object jobInstance) throws JobException{
 		try {
 			Class<?> jobClass = Class.forName("com.job.entrance." + job.getJobScriptName());
@@ -39,6 +60,15 @@ public class JobReflecter {
 		}
 	}
 	
+	/**
+	 * 设置作业的多线程信息
+	 * @param job
+	 * @param jobInstance
+	 * @param threadCondition
+	 * @return
+	 * @throws JobException
+	 * @author zhouwei
+	 */
 	public static Object setThreadCondition(ScheduleJob job, Object jobInstance, String threadCondition) throws JobException{
 		try {
 			Class<?> jobClass = Class.forName("com.job.entrance." + job.getJobScriptName());
@@ -50,17 +80,14 @@ public class JobReflecter {
 		}
 	}
 
-	public static String fetchJobConfig(ScheduleJob job) throws JobException {
-		try {
-			Class<?> jobTracerClass = Class.forName("com.job.common.util.JobTracer");
-			Object jobTracerInstance = jobTracerClass.newInstance();
-			Method fetchJobConfigMethod = jobTracerClass.getMethod("fetchJobConfig", new Class[]{int.class});
-			return (String)fetchJobConfigMethod.invoke(jobTracerInstance, new Object[]{Integer.parseInt(job.getJobAttr().split("_")[0])});
-		}catch (Exception e) {
-			throw new JobException(e);
-		}
-	}
-	
+	/**
+	 * 设置作业每次抓取的条数
+	 * @param job
+	 * @param jobInstance
+	 * @return
+	 * @throws JobException
+	 * @author zhouwei
+	 */
 	public static Object setFetchLimit(ScheduleJob job, Object jobInstance) throws JobException{
 		try {
 			Class<?> jobClass = Class.forName("com.job.entrance." + job.getJobScriptName());
