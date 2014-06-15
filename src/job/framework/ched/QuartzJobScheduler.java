@@ -4,7 +4,6 @@ import job.framework.lang.JobException;
 import job.framework.sched.model.ScheduleJob;
 
 import org.apache.log4j.Logger;
-import org.commonjobframework.sched.QuartzJob;
 import org.quartz.CronTrigger;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;

@@ -2,6 +2,7 @@ package com.job.common.util;
 
 import job.framework.facade.IJobLogger;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /*
@@ -17,8 +18,11 @@ public class JobService {
 
 	protected IJobLogger jobLogger = new JobLogger();
 	
+	protected static JobServiceHolder holder;
+	
 	static {
-		new ClassPathXmlApplicationContext("beans.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		holder = (JobServiceHolder)context.getBean("JobServiceHolder");
 	}
 	
 	public String getThreadCondition() {

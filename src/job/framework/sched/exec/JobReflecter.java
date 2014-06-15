@@ -16,9 +16,9 @@ public class JobReflecter {
 	
 	public static Object getJobInstance(ScheduleJob job) throws JobException{
 		try {
-			Class<?> jobClass = Class.forName("com..job.entrance." + job.getJobScriptName());
+			Class<?> jobClass = Class.forName("com.job.entrance." + job.getJobScriptName());
 			Object jobInstance = jobClass.newInstance();
-			Class<?> jobLoggerClass = Class.forName("com..job.common.util.JobLogger");
+			Class<?> jobLoggerClass = Class.forName("com.job.common.util.JobLogger");
 			Constructor<?> jobLoggerConstructor = jobLoggerClass.getConstructor(new Class[]{String.class});
 			Object jobLoggerInstance = jobLoggerConstructor.newInstance(new Object[]{job.getJobAttr()});
 			Method setJobLoggerMethod = jobClass.getMethod("setJobLogger", new Class[]{IJobLogger.class});
