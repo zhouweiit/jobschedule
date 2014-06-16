@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="baseDBCP" abstract="true">
+        <!--initialSize: 初始化连接-->  
+		<property name="initialSize" value="2"/>  
+		
+		<!--maxIdle: 最大空闲连接-->  
+		<property name="maxIdle" value="5"/>  
+		
+		<!--minIdle: 最小空闲连接-->  
+		<property name="minIdle" value="3"/>  
+		
+		<!--maxActive: 最大连接数量-->  
+		<property name="maxActive" value="10"/>  
+		
+		<!--removeAbandoned: 是否自动回收超时连接-->  
+		<property name="removeAbandoned" value="true"/>  
+		
+		<!--removeAbandonedTimeout: 超时时间(以秒数为单位)-->  
+		<property name="removeAbandonedTimeout" value="180"/>  
+		
+		<!--maxWait: 超时等待时间以毫秒为单位 6000毫秒/1000等于60秒-->  
+		<property name="maxWait" value="60000"/>  
+		
+		<!-- 打开检查,用异步线程evict进行检查 -->
+		<property name="testWhileIdle"><value>true</value></property>   
+		
+		<!-- 进行borrowObject进行处理时，对拿到的connection进行validateObject校验 -->
+		<property name="testOnBorrow"><value>false</value></property>  
+		
+		<!-- 进行returnObject对返回的connection进行validateObject校验，个人觉得对数据库连接池的管理意义不大 -->
+		<property name="testOnReturn"><value>false</value></property>  
+		
+		<!-- 检查的sql -->
+		<property name="validationQuery"><value>select 1</value></property>  
+		
+		<!-- 代表在执行检查时，通过statement设置，statement.setQueryTimeout(validationQueryTimeout) -->			
+		<property name="validationQueryTimeout"><value>1</value></property>  
+		
+		<!-- 设置的Evict线程的时间，单位ms，大于0才会开启evict检查线程 -->
+		<property name="timeBetweenEvictionRunsMillis"><value>30000</value></property>  
+		
+		<!-- 代表每次检查链接的数量，建议设置和maxActive一样大，这样每次可以有效检查所有的链接 -->
+		<property name="numTestsPerEvictionRun"><value>50</value></property>  
+		
+		<property name="logAbandoned"><value>true</value></property>
+		
+    </bean>
+
+	<bean id="test01" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" parent="baseDBCP">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://127.0.0.1/test_00?useUnicode=true&amp;characterEncoding=GBK&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+	</bean>
+
+	<bean id="test02" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" parent="baseDBCP">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://127.0.0.1/test_01?useUnicode=true&amp;characterEncoding=GBK&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+	</bean>
+
+	<bean id="test" class="job.framework.ds.DynamicDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="test01" value-ref="test01" />
+				<entry key="test02" value-ref="test02" />
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="test01" />
+	</bean>
+
+</beans>
