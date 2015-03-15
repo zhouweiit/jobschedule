@@ -1,5 +1,7 @@
 It's a java project for job dispatch
 git@github.com:zhouweiit/jobschedule.git
 
+基于quartz实现的调度框架
+
 Wei Zhou
 2014-03-02
